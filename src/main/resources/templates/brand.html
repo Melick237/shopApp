@@ -35,6 +35,10 @@
         </div>
     </div>
 
+    <!--search-->
+    
+    <!--end search-->
+
     <!-- brand -->
     <div class="brand">
         <div class="container">
@@ -48,10 +52,9 @@
                             <img th:src="${phone.imagePath}" alt="img" />
                             <h3>€<strong th:text="${phone.price}" class="red"></strong></h3>
                             <span th:text="${phone.name}"></span>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
-                            <i><img src="images/star.png"/></i>
+
+                            <i th:each="i : ${#numbers.sequence(1 , phone.notation)}"><img src="images/star.png"/></i>
+
                         </div>
                     </div>
                     <div class="col-md-12">

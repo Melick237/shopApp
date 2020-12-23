@@ -18,13 +18,18 @@ public class Phone {
 
     private String description;
 
+    private Integer notation;
+
+
+
     public Phone() { }
 
-    public Phone(Long price, String name, String imagePath, String description) {
+    public Phone(Long price, String name, String imagePath, String description, Integer notation) {
         this.price = price;
         this.name = name;
         this.imagePath = imagePath;
         this.description = description;
+        this.notation = notation;
     }
 
     public Long getId() {
@@ -67,6 +72,14 @@ public class Phone {
         this.description = description;
     }
 
+    public Integer getNotation() {
+        return notation;
+    }
+
+    public void setNotation(Integer notation) {
+        this.notation = notation;
+    }
+
     @Override
     public String toString() {
         return "Phone{" +
@@ -75,6 +88,7 @@ public class Phone {
                 ", name='" + name + '\'' +
                 ", imagePath='" + imagePath + '\'' +
                 ", description='" + description + '\'' +
+                ", notation='" + notation + '\'' +
                 '}';
     }
 }
