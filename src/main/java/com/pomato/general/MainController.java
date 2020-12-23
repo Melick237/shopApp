@@ -15,11 +15,6 @@ public class MainController {
         return "about";
     }
 
-    @GetMapping("/brand")
-    public String handleBrandPage(){
-        return "brand";
-    }
-
     @GetMapping("/contact")
     public String handleContactPage(){
         return "contact";
