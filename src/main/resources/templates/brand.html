@@ -36,9 +36,23 @@
     </div>
 
     <!--search-->
-    
-    <!--end search-->
+    <form action="/gap" method="get">
+        <br>
+        <input type="number" id="min" name="min" placeholder="Von"> -
+        <input type="number" id="max" name="max" placeholder="Bis">
 
+        <input type="submit" id="searchBtn" value="Submit">
+
+    </form>
+    <!--end search-->
+    <!--stars-->
+    <form action="/stern" method="get">
+
+        <input type="number" id="stars" name="stars" placeholder="how many stars?">
+
+        <input type="submit" id="starSearchBtn" value="Submit">
+    </form>
+    <!--end search-->
     <!-- brand -->
     <div class="brand">
         <div class="container">
@@ -72,6 +86,7 @@
     <!-- end footer -->
     <!-- Javascript files-->
     <th:block th:insert="util/import.html :: script"></th:block>
+
 </body>
 
 </html>

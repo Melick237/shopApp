@@ -9,5 +9,6 @@ public interface PhoneRepository extends CrudRepository<Phone,Long> {
 
     @Override
     List<Phone> findAll();
-
+    List<Phone> findPhonesByPriceGreaterThanAndPriceLessThan(Long min, Long max);
+    List<Phone> findPhonesByNotationIs(Integer Stars);
 }
