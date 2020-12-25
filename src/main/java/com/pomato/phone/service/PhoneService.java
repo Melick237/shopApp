@@ -19,6 +19,10 @@ public class PhoneService {
         return phoneRepository.findAll();
     }
 
+    public Optional<Phone> getPhone(Long id){
+        return phoneRepository.findById(id);
+    }
+
     public void save(Phone phone){
         if(phone == null) throw new NullPointerException("Phone must not be null");
         phoneRepository.save(phone);
@@ -37,5 +41,15 @@ public class PhoneService {
         List<Phone> phones = new ArrayList<>();
         phones.addAll(phoneRepository.findPhonesByNotationIs(stars));
         return phones;
+    }
+
+    public void uniquePhone(Long id){
+        if(id == null) throw new NullPointerException();
+        Optional<Phone> phone = getPhone(id);
+
+            return;
+
+
+
     }
 }

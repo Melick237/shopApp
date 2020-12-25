@@ -62,14 +62,16 @@
             <div class="container">
                 <div class="row">
                     <div th:each="phone : ${phones}" class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
-                        <div class="brand_box" >
-                            <img th:src="${phone.imagePath}" alt="img" />
-                            <h3>€<strong th:text="${phone.price}" class="red"></strong></h3>
-                            <span th:text="${phone.name}"></span>
+                        <a th:href="'/unique?id='+${phone.id}">
+                            <div class="brand_box" >
+                                <img th:src="${phone.imagePath}"  alt="img" />
+                                <h3>€<strong th:text="${phone.price}" class="red"></strong></h3>
+                                <span th:text="${phone.name}"></span>
 
-                            <i th:each="i : ${#numbers.sequence(1 , phone.notation)}"><img src="images/star.png"/></i>
+                                <i th:each="i : ${#numbers.sequence(1 , phone.notation)}"><img src="images/star.png"/></i>
 
-                        </div>
+                            </div>
+                        </a>
                     </div>
                     <div class="col-md-12">
                         <a class="read-more">See More</a>

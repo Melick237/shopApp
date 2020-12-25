@@ -6,3 +6,9 @@ form
     margin: 0px;
     display:inline;
 }
+
+.img-edit{
+    position: relative;
+    width: 50%;
+    height: auto;
+}
