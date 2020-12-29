@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+   <head>
+      <!-- basic -->
+      <th:block th:insert="util/import.html :: meta"></th:block>
+      <!-- site metas -->
+      <th:block th:insert="util/import.html :: sitemeta"></th:block>
+      <!-- bootstrap css -->
+      <th:block th:insert="util/import.html :: maincss"></th:block>
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout special-page">
+      <!-- loader  -->
+      <th:block th:insert="util/header.html :: header"></th:block>
+      <!-- end header -->
+      <section th:action="'/unique?id='+${phone.id}+${phone.stock}" method="post" th:object="${phone}">
+         <div class="about">
+            <div class="container">
+               <div class="row">
+                  <div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+                     <div class="about_img">
+                        <figure> <img class="img-edit" th:src="${phone.imagePath}"  alt="img" /></figure>
+                     </div>
+                  </div>
+                  <div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
+                     <div class="about_box">
+                        <h3>APPLE</h3>
+                        <span th:text="${phone.name}"></span>
+                        <h3>€<strong th:text="${phone.price}" class="red"></strong></h3>
+                        <i th:each="i : ${#numbers.sequence(1 , phone.notation)}"><img src="images/star.png"/></i>
+                        <h4 th:text="${phone.description}"></h4>
+                        <h4 th:if="${phone.stock < 5}"> Nur noch <div th:text="${phone.stock}" th:class="col"></div> Übrig</h4>
+                     </div>
+
+                     <div class="col-md-12">
+                        <a class="read-more">Add to Cart</a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+
+
+      <!-- footer -->
+      <th:block th:insert="util/footer.html :: footer"></th:block>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <th:block th:insert="util/import.html :: script"></th:block>
+   </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- basic -->
+
+    <!-- bootstrap css -->
+    <th:block th:insert="util/import.html :: meta"></th:block>
+    <th:block th:insert="util/import.html :: sitemeta"></th:block>
+    <th:block th:insert="util/import.html :: maincss"></th:block>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<!-- body -->
+
+<body class="main-layout">
+<!-- loader  -->
+<div class="loader_bg">
+    <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+</div>
+<!-- end loader -->
+<!-- header -->
+<th:block th:insert="util/header.html :: header"></th:block>
+<!-- end header -->
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>Users</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="brand">
+    <div class="container">
+
+    </div>
+    <div class="brand-bg">
+        <div class="container">
+            <div class="row">
+                <div th:each="user : ${users}" class="col-xl-4 col-lg-4 col-md-4 col-sm-6 margin">
+                    <a th:href="'/user/unique?id='+${user.id}">
+                        <div class="brand_box" >
+                            <h3><strong th:text="${user.firstName  + ' ' + user.lastName}"></strong></h3>
+                            <span th:text="${user.email}"></span>
+                            <p th:text="${user.authorities}"> </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- end brand -->
+
+<!-- footer -->
+<th:block th:insert="util/footer.html :: footer"></th:block>
+<!-- end footer -->
+<!-- Javascript files-->
+<th:block th:insert="util/import.html :: script"></th:block>
+
+</body>
+
+</html>
