@@ -12,3 +12,8 @@ form
     width: 100%;
     height: auto;
 }
+.col{
+    color: #db0000;
+    display: initial;
+    font-size: 45px;
+}
