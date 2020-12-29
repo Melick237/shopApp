@@ -20,16 +20,19 @@ public class Phone {
 
     private Integer notation;
 
+    private Long stock;
+
 
 
     public Phone() { }
 
-    public Phone(Long price, String name, String imagePath, String description, Integer notation) {
+    public Phone(Long price, String name, String imagePath, String description, Integer notation, Long stock) {
         this.price = price;
         this.name = name;
         this.imagePath = imagePath;
         this.description = description;
         this.notation = notation;
+        this.stock = stock;
     }
 
     public Long getId() {
@@ -80,6 +83,14 @@ public class Phone {
         this.notation = notation;
     }
 
+    public Long getStock() {
+        return stock;
+    }
+
+    public void setStock(Long stock) {
+        this.stock = stock;
+    }
+
     @Override
     public String toString() {
         return "Phone{" +
@@ -88,7 +99,8 @@ public class Phone {
                 ", name='" + name + '\'' +
                 ", imagePath='" + imagePath + '\'' +
                 ", description='" + description + '\'' +
-                ", notation='" + notation + '\'' +
+                ", notation=" + notation +
+                ", stock=" + stock +
                 '}';
     }
 }

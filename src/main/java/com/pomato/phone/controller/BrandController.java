@@ -42,6 +42,16 @@ public class BrandController {
 
     }
 
+    @GetMapping("/stock")
+    public String handleStock(@RequestParam("stock") Optional<Long> stock, Model model){
+        if(stock.isEmpty())
+            return "redirect:/brand";
+        model.addAttribute("phones", phoneService.searchPhoneStock(stock.get()));
+        return "brand";
+
+
+    }
+
     @GetMapping("/unique")
     public String handleUnique(@RequestParam("id") Optional<Long> phoneId , Model model){
         if(phoneId.isEmpty())

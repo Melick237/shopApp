@@ -31,16 +31,27 @@ public class PhoneService {
 
     public List<Phone> searchPhoneInGap(Long min , Long max){
 
-        List<Phone> phones = new ArrayList<>();
+    List<Phone> phones = new ArrayList<>();
         phones.addAll(phoneRepository.findPhonesByPriceGreaterThanAndPriceLessThan(min,max));
         return phones;
-    }
+}
 
     public List<Phone> searchPhoneStars(Integer stars){
 
         List<Phone> phones = new ArrayList<>();
         phones.addAll(phoneRepository.findPhonesByNotationIs(stars));
         return phones;
+    }
+
+    public List<Phone> searchPhoneStock(Long stock){
+
+        List<Phone> phones = new ArrayList<>();
+        phones.addAll(phoneRepository.findPhonesByStockIs(stock));
+        return phones;
+    }
+
+    public Optional<Phone> getPhoneStock(Long stock){
+        return phoneRepository.findPhonesByStock(stock);
     }
 
     public void uniquePhone(Long id){

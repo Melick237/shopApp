@@ -17,7 +17,7 @@
       <!-- loader  -->
       <th:block th:insert="util/header.html :: header"></th:block>
       <!-- end header -->
-      <section th:action="'/unique?id='+${phone.id}" method="post" th:object="${phone}">
+      <section th:action="'/unique?id='+${phone.id}+${phone.stock}" method="post" th:object="${phone}">
          <div class="about">
             <div class="container">
                <div class="row">
@@ -33,6 +33,7 @@
                         <h3>€<strong th:text="${phone.price}" class="red"></strong></h3>
                         <i th:each="i : ${#numbers.sequence(1 , phone.notation)}"><img src="images/star.png"/></i>
                         <h4 th:text="${phone.description}"></h4>
+                        <h4 th:if="${phone.stock < 5}" th:text="'Nur noch ' + ${phone.stock } + ' übrig'"></h4>
                      </div>
 
                      <div class="col-md-12">

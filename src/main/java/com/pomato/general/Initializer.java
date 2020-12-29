@@ -21,28 +21,28 @@ public class Initializer {
     }
 
     public void setupDemoPhones(){
-        phoneService.save( new Phone(10L , "Iphone XS max" , "images/1.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 3));
+        phoneService.save( new Phone(819L , "Iphone XS max" , "images/1.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 3 , 10L));
 
-        phoneService.save( new Phone(110L , "Iphone X pro max" , "images/2.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 4));
+        phoneService.save( new Phone(661L , "Iphone X" , "images/2.png" , "Apple IPhone X 256 Gb - Silber, Dual SIM" , 4, 10L));
 
-        phoneService.save( new Phone(2110L , "Iphone 11 pro max " , "images/3.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 5));
+        phoneService.save( new Phone(1298L , "Iphone 11 pro max " , "images/3.png" , "APPLE iPhone 11 Pro Max 512 GB Gold Dual SIM" , 5, 3L));
 
-        phoneService.save( new Phone(1980L , "Iphone 12 pro max +" , "images/4.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 2));
+        phoneService.save( new Phone(820L , "Iphone 11 Pro" , "images/4.png" , "Apple IPhone 11 Pro 64GB - Gold" , 2, 1L));
 
-        phoneService.save( new Phone(159L , "Iphone XR" , "images/5.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 3));
+        phoneService.save( new Phone(565L , "Iphone XR" , "images/5.png" , "APPLE iPhone XR 64 GB Coral Dual SIM" , 3, 10L));
 
-        phoneService.save( new Phone(219L , "Iphone 8 +" , "images/6.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 5));
+        phoneService.save( new Phone(459L , "Iphone 8 +" , "images/6.png" , "Apple IPhone 8 plus, Dual SIM" , 5, 10L));
 
-        phoneService.save( new Phone(975L , "Iphone 6 +" , "images/1.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 2));
+        phoneService.save( new Phone(190L , "Iphone 7" , "images/7.png" , "Apple iPhone 7 128GB - Roségold" , 2, 10L));
 
-        phoneService.save( new Phone(749L , "Iphone 7" , "images/2.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 3));
+        phoneService.save( new Phone(130L , "Iphone 6s" , "images/8.png" , "Apple iPhone 6s 64GB - Silber, Dual SIM" , 3, 10L));
 
-        phoneService.save( new Phone(1349L , "Iphone 7+" , "images/3.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 4));
+        phoneService.save( new Phone(300L , "Iphone 8" , "images/9.png" , "Apple iPhone 8 256GB - Silber" , 4, 10L));
 
-        phoneService.save( new Phone(8888850L , "Iphone pro max +" , "images/4.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 2));
+        phoneService.save( new Phone(630L , "Iphone 11" , "images/10.png" , "Apple iPhone 11 64GB - Grün, Dual SIM" , 2, 10L));
 
-        phoneService.save( new Phone(980L , "Iphone X" , "images/3.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 4));
+        phoneService.save( new Phone(500L , "Iphone XS" , "images/11.png" , "Apple iPhone XS 256GB - Silber, Dual SIM" , 4, 10L));
 
-        phoneService.save( new Phone(550L , "Iphone XS max" , "images/1.png" , "Apple IPhone XS Max 256GB space Gray, Dual SIM" , 3));
+        phoneService.save( new Phone(876L , "Iphone 12" , "images/12.png" , "APPLE iPhone 12 5G 64 GB Blau, Dual SIM" , 3, 10L));
     }
 }
