@@ -37,7 +37,7 @@
                      </div>
 
                      <div class="col-md-12">
-                        <a class="read-more">Add to Cart</a>
+                        <a class="read-more" th:href="${'buy?id='+phone.id}">Buy now</a>
                      </div>
 
                      <div sec:authorize="hasAuthority('MODERATOR')">
@@ -55,7 +55,7 @@
                                  <input th:value="${phone.stock}" class="form-control" placeholder="stock" type="number" name="stock">
                               </div>
                               <div class="col-12">
-                                 <input th:value="${phone.imagePath}" class="form-control" placeholder="stock" type="text" name="imagePath">
+                                 <input th:value="${phone.imagePath}" class="form-control" placeholder="imagePath" type="text" name="imagePath">
                               </div>
                               <div class="col-12">
                                  <textarea class="form-control" th:text="${phone.description}" placeholder="description"  name="description">

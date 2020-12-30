@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>pomato</title>
+    <th:block th:insert="util/import.html :: meta"></th:block>
+    <th:block th:insert="util/import.html :: maincss"></th:block>
+
+</head>
+<!-- body -->
+
+<body class="main-layout">
+<!-- loader  -->
+<th:block th:insert="util/header.html :: header"></th:block>
+<!-- end header -->
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>THANK YOU</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- about -->
+<div class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+                <div class="about_img">
+                    <figure><img th:src="${phone.imagePath}" alt="img" /></figure>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
+                <div class="about_box">
+                    <span>Thank you for your purchase !</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- end about -->
+
+<!-- footer -->
+<th:block th:insert="util/footer.html :: footer"></th:block>
+<!-- end footer -->
+<!-- Javascript files-->
+<th:block th:insert="util/import.html :: script"></th:block>
+
+</body>
+
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- basic -->
@@ -52,6 +52,13 @@
 
         <input type="submit" id="starSearchBtn" value="Submit">
     </form>
+
+    <br>
+    <br>
+    <br>
+    <div sec:authorize="hasAuthority('MODERATOR')">
+        <a class="btn btn-success" href="/addPhone">Add Phones</a>
+    </div>
     <!--end search-->
     <!-- brand -->
     <div class="brand">
@@ -69,7 +76,6 @@
                                 <span th:text="${phone.name}"></span>
 
                                 <i th:each="i : ${#numbers.sequence(1 , phone.notation)}"><img src="images/star.png"/></i>
-
                             </div>
                         </a>
                     </div>

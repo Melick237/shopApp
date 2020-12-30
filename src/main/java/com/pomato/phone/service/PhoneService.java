@@ -17,6 +17,16 @@ public class PhoneService {
     PhoneRepository phoneRepository;
 
     public List<Phone> getPhones(){
+        List<Phone> phones = new ArrayList<>();
+
+        for(Phone p : phoneRepository.findAll()){
+            if(p.getStock() > 1)
+                phones.add(p);
+        }
+        return phones;
+    }
+
+    public List<Phone> getPhonesAdmin(){
         return phoneRepository.findAll();
     }
 
@@ -35,6 +45,13 @@ public class PhoneService {
           phone.setStock(phoneEditForm.stock);
 
           save(phone);
+    }
+
+    public void addPhone(PhoneEditForm phoneEditForm){
+        if(phoneEditForm == null) throw new NullPointerException("phoneEditForm must not be null");
+
+        Phone phone = new Phone(phoneEditForm.price , phoneEditForm.name , phoneEditForm.imagePath , phoneEditForm.description , 1 , phoneEditForm.stock);
+        save(phone);
     }
     public void save(Phone phone){
         if(phone == null) throw new NullPointerException("Phone must not be null");
@@ -72,4 +89,12 @@ public class PhoneService {
         return phoneRepository.findPhonesByStock(stock);
     }
 
+    public void buyPhone(Phone phone){
+        if(phone == null) throw new NullPointerException("Phone must not be null");
+        if(phone.getStock() < 1)
+            return;
+        Phone p = phone;
+        p.setStock(phone.getStock() - 1);
+        save(p);
+    }
 }

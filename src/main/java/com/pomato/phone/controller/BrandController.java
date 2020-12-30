@@ -4,6 +4,7 @@ import com.pomato.phone.entities.Phone;
 import com.pomato.phone.forms.PhoneEditForm;
 import com.pomato.phone.service.PhoneService;
 import com.pomato.user.entities.User;
+import com.pomato.user.entities.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -21,8 +22,19 @@ public class BrandController {
     @GetMapping("/brand")
     public String handleBrandPage(Model model , @AuthenticationPrincipal User user){
 
-        model.addAttribute("phones", phoneService.getPhones());
+        if(user == null){
+            model.addAttribute("phones", phoneService.getPhones());
+            model.addAttribute("user" , user);
+            return "brand";
+        }
 
+        if(user.hasAuthorities(UserRole.MODERATOR)){
+            model.addAttribute("phones", phoneService.getPhonesAdmin());
+            model.addAttribute("user" , user);
+            return "brand";
+        }
+
+        model.addAttribute("phones", phoneService.getPhones());
         model.addAttribute("user" , user);
         return "brand";
     }
@@ -105,5 +117,42 @@ public class BrandController {
 
         phoneService.deletePhone(phone.get());
         return "redirect:/brand";
+    }
+
+    @GetMapping("/addPhone")
+    public String handleAddPhonePage(Model model , @AuthenticationPrincipal User user){
+
+        if(!user.hasAuthorities(UserRole.MODERATOR))
+            return "redirect:/";
+
+        model.addAttribute("phones", phoneService.getPhones());
+        model.addAttribute("user" , user);
+        model.addAttribute("editForm", new PhoneEditForm());
+        return "admin/addPhone";
+    }
+
+    @PostMapping("/addPhone")
+    public String handleAddPhone(@ModelAttribute("editForm") PhoneEditForm phoneEditForm){
+
+        phoneService.addPhone(phoneEditForm);
+        return "redirect:/brand";
+    }
+
+    @GetMapping("/buy")
+    public String handleBuy(@RequestParam("id") Optional<Long> phoneId , Model model , @AuthenticationPrincipal User user ){
+
+        if(phoneId.isEmpty())
+            return "redirect:/brand";
+
+        Optional<Phone> phone = phoneService.getPhone(phoneId.get());
+
+        if (phone.isEmpty())
+            return "redirect:/brand";
+
+        phoneService.buyPhone(phone.get());
+
+        model.addAttribute("phone", phone.get());
+        model.addAttribute("user" , user);
+        return "buy";
     }
 }
