@@ -1,0 +1,35 @@
+= POMATO PHONE SALES APP
+
+=== ABOUT
+
+
+Simple online sales application with Java and Spring Boot
+
+image:/app.png?raw=true[home page image]
+
+=== INSTALLATION
+
+To install and run this project follow these steps:
+
+. Clone this repository
+
+. Install Gradle Dependency
+
+. Run the Spring boot application (src/main/java/com/pomato/PomatoApplication.java)
+
+=== ALL DEFAULT USERS
+
+. All default users in the App
+image:/TestUser.png?raw=true[home2 page image]
+
+=== FUNCTIONALITY
+
+. Login / Logout
+. User Management
+. Phone Management
+. Cart functionality
+. Administrator / User restriction
+
+=== LEARN MORE
+
+. Spring boot https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/[documentation]
