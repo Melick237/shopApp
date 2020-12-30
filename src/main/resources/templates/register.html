@@ -24,13 +24,13 @@
                 <div class="titlepage">
                     <h2>Contact us</h2>
                 </div>
-                <form class="main_form">
+                <form class="main_form" action="/register" method="post" th:object="${registerDto}">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                            <input class="form-control" placeholder="firstname" type="text" name="firstname">
+                            <input class="form-control" placeholder="firstname" type="text" name="firstName">
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                            <input class="form-control" placeholder="lastname" type="text" name="lastname">
+                            <input class="form-control" placeholder="lastname" type="text" name="lastName">
                         </div>
                         <div class=" col-md-12">
                             <input class="form-control" placeholder="email" type="email" name="email">
@@ -40,11 +40,13 @@
                             <input class="form-control" placeholder="password" type="password" name="password">
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
-                            <input class="form-control" placeholder="passwordconfirm" type="password" name="passwordconfirm">
+                            <input class="form-control" placeholder="passwordconfirm" type="password" name="passwordConfirm">
                         </div>
 
                         <div class=" col-md-12">
                             <button class="send">Register</button>
+                            <br>
+                            <p style="color: red" th:text="${error}"></p>
                         </div>
                     </div>
                 </form>

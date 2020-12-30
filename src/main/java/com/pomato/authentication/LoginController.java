@@ -72,8 +72,4 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @GetMapping("/register")
-    public String handleRegisterPage(Model model){
-        return "register";
-    }
 }

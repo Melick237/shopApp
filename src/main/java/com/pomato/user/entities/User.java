@@ -49,6 +49,9 @@ public class User implements UserDetails, Serializable {
         this.hashedPassword = password;
         this.grantedAuthorities = grantedAuthorities;
     }
+
+
+
     public Set<UserRole> getGrantedAuthorities() {
         return grantedAuthorities;
     }

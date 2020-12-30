@@ -1,15 +1,16 @@
 package com.pomato.user.services;
 
+import com.pomato.register.forms.RegisterDto;
 import com.pomato.token.TokenServiceImpl;
 import com.pomato.user.entities.User;
+import com.pomato.user.entities.UserRole;
 import com.pomato.user.repositories.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class UserManagement {
@@ -31,8 +32,15 @@ public class UserManagement {
         return byId;
     }
 
+    public void registerUser(RegisterDto registerDto){
+        if(registerDto == null) throw new NullPointerException("registerDto must not be null");
+        User user = new User(registerDto.firstName , registerDto.lastName , registerDto.email , registerDto.password , new HashSet<UserRole>(Collections.singletonList(UserRole.USER)));
+        rehashPassword(registerDto.password,user);
+    }
+
     public void saveUser(final User user){
         if(user == null) throw new NullPointerException("User must not be null");
+
         userRepository.save(user);
     }
 
@@ -63,6 +71,13 @@ public class UserManagement {
 
         user.hashedPassword = passwordEncoder.encode(newPassword);
         saveUser(user);
+    }
+
+    public boolean doesEmailAlreadyExists(final String email) {
+        if (email == null) throw new NullPointerException("Email must not be null.");
+        if (email.isEmpty()) throw new NullPointerException("Email must not be empty.");
+
+        return findUserByEmail(email).isPresent();
     }
 
     public void rehashPassword(final String password, final User user) {
