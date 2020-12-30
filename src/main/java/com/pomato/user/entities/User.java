@@ -150,4 +150,22 @@ public class User implements UserDetails, Serializable {
         this.validationToken = validationToken;
     }
 
+    public boolean hasAuthorities(UserRole role){
+        return grantedAuthorities.contains(role);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", hashedPassword='" + hashedPassword + '\'' +
+                ", validationToken='" + validationToken + '\'' +
+                ", grantedAuthorities=" + grantedAuthorities +
+                '}';
+    }
+
+
 }

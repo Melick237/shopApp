@@ -38,6 +38,17 @@ public class UserManagement {
         rehashPassword(registerDto.password,user);
     }
 
+    public void editUser(RegisterDto registerDto){
+        if(registerDto == null) throw new NullPointerException("registerDto must not be null");
+        Optional<User> user = findUserByEmail(registerDto.email);
+        if(user.isEmpty())
+            return;
+
+        user.get().setFirstName(registerDto.firstName);
+        user.get().setLastName(registerDto.lastName);
+
+        rehashPassword(registerDto.password , user.get());
+    }
     public void saveUser(final User user){
         if(user == null) throw new NullPointerException("User must not be null");
 
