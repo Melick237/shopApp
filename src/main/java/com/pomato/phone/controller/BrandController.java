@@ -1,6 +1,7 @@
 package com.pomato.phone.controller;
 
 import com.pomato.phone.entities.Phone;
+import com.pomato.phone.forms.PhoneEditForm;
 import com.pomato.phone.service.PhoneService;
 import com.pomato.user.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,16 +73,37 @@ public class BrandController {
 
         model.addAttribute("phone", phone.get());
         model.addAttribute("user" , user);
-
+        model.addAttribute("editForm", new PhoneEditForm());
         return "unique";
     }
 
-    @PostMapping("/unique")
-    public String handlePostUnique(@RequestParam("id") Optional<Long> phoneId ){
+    @PostMapping("/editPhone")
+    public String handleEditPhone(@RequestParam("id") Optional<Long> phoneId , @ModelAttribute("editForm") PhoneEditForm phoneEditForm ){
         if(phoneId.isEmpty())
             return "redirect:/brand";
-        phoneService.uniquePhone(phoneId.get());
 
+        Optional<Phone> phone = phoneService.getPhone(phoneId.get());
+
+        if(phone.isEmpty())
+            return "redirect:/brand";
+
+        phoneService.editPhone(phoneEditForm, phone.get());
+
+        return "redirect:/unique?id="+phoneId.get();
+    }
+
+    @GetMapping("/deletePhone")
+    public String handleDelete(@RequestParam("id") Optional<Long> phoneId){
+
+        if(phoneId.isEmpty())
+            return "redirect:/brand";
+
+        Optional<Phone> phone = phoneService.getPhone(phoneId.get());
+
+        if(phone.isEmpty())
+            return "redirect:/brand";
+
+        phoneService.deletePhone(phone.get());
         return "redirect:/brand";
     }
 }

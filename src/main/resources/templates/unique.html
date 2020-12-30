@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
    <head>
       <!-- basic -->
       <th:block th:insert="util/import.html :: meta"></th:block>
@@ -38,6 +38,38 @@
 
                      <div class="col-md-12">
                         <a class="read-more">Add to Cart</a>
+                     </div>
+
+                     <div sec:authorize="hasAuthority('MODERATOR')">
+                        <h4> Im Stock: <div th:text="${phone.stock}" th:class="col"></div></h4>
+
+                        <form class="main_form" th:action="${'editPhone?id=' + phone.id}" method="post" th:object="${editForm}">
+                           <div class="row">
+                              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                 <input th:value="${phone.name}" class="form-control" placeholder="name" type="text" name="name">
+                              </div>
+                              <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6">
+                                 <input th:value="${phone.price}" class="form-control" placeholder="price" type="number" name="price">
+                              </div>
+                              <div class="col-12">
+                                 <input th:value="${phone.stock}" class="form-control" placeholder="stock" type="number" name="stock">
+                              </div>
+                              <div class="col-12">
+                                 <input th:value="${phone.imagePath}" class="form-control" placeholder="stock" type="text" name="imagePath">
+                              </div>
+                              <div class="col-12">
+                                 <textarea class="form-control" th:text="${phone.description}" placeholder="description"  name="description">
+                                 </textarea>
+                              </div>
+
+                              <div class=" col-md-6">
+                                 <button class="send">Edit</button>
+                              </div>
+                              <div class=" col-md-6">
+                                 <a th:href="${'/deletePhone?id='+ phone.id}" class="btn btn-danger" role="button">Delete</a>
+                              </div>
+                           </div>
+                        </form>
                      </div>
                   </div>
                </div>
